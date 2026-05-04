@@ -1,0 +1,49 @@
+{
+    "faults": [
+        {
+            "id": "SensorFailure_Fault_Id",
+            "type": "SensorFailure",
+            "severity": "Medium",
+            "confirmed_threshold": 3,
+            "heal_threshold": 2,
+            "on_confirmed": "NULL",
+            "FaultAction": "LogFault | NotifyUser"
+        },
+        {
+            "id": "CommunicationError_Fault_Id",
+            "type": "CommunicationError",
+            "severity": "High",
+            "confirmed_threshold": 4,
+            "heal_threshold": 3,
+            "on_confirmed": "communication_error_handler",
+            "FaultAction": "LogFault | NotifyUser"
+        },
+        {
+            "id": "PowerFailure_Fault_Id",
+            "type": "PowerFailure",
+            "severity": "High",
+            "confirmed_threshold": 5,
+            "heal_threshold": 4,
+            "on_confirmed": "NULL",
+            "FaultAction": "LogFault | NotifyUser | ShutdownSystem"
+        },
+        {
+            "id": "Overheating_Fault_Id",
+            "type": "Overheating",
+            "severity": "High",
+            "confirmed_threshold": 4,
+            "heal_threshold": 3,
+            "on_confirmed": "NULL",
+            "FaultAction": "LogFault | NotifyUser | ShutdownSystem"
+        },
+        {
+            "id": "SoftwareError_Fault_Id",
+            "type": "SoftwareError",
+            "severity": "Medium",
+            "confirmed_threshold": 3,
+            "heal_threshold": 2,
+            "on_confirmed": "NULL",
+            "FaultAction": "LogFault | NotifyUser"
+        }
+    ]
+}
