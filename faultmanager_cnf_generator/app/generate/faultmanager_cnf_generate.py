@@ -103,8 +103,7 @@ def faultmanager_cnf_generator(args):
         
         template = env.get_template(template_name)
         
-        counter = 0
-        output = template.render(id_counter = counter, faults = faults_cnf)
+        output = template.render(faults = faults_cnf)
         try:       
             with open(output_file, 'w') as f:
                 f.write(output)

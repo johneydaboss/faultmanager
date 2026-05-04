@@ -1,1 +1,3 @@
 /build/
+/faultmanager_cnf_generator/app/pycache/
+/faultmanager_cnf_generator/app/generate/pycache/
