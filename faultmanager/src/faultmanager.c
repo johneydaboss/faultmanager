@@ -50,13 +50,17 @@ Err_T faultmanager_report_fault(uint32_t id, DiagResult status){
             fault_manager[id].confirm_counter++;
             fault_manager[id].heal_counter = 0; // Reset heal counter
             
-            if (fault_manager[id].confirm_counter == fault_definitions[id].confirmed_threshold) {
+            if (fault_manager[id].confirm_counter >= fault_definitions[id].confirmed_threshold) {
                 fault_manager[id].current_status = FaultDetected;
-                handle_fault_action(fault_definitions[id].actions);
 
-                // Call the on_confirmed callback if defined
-                if (fault_definitions[id].on_confirmed) {
-                    fault_definitions[id].on_confirmed();
+                if(fault_manager[id].confirm_counter == fault_definitions[id].confirmed_threshold){
+                    // Only handle actions on the transition to FaultDetected
+                    handle_fault_action(fault_definitions[id].actions);
+
+                    // Call the on_confirmed callback if defined
+                    if (fault_definitions[id].on_confirmed) {
+                        fault_definitions[id].on_confirmed();
+                    }
                 }
             }
             else {
@@ -69,8 +73,8 @@ Err_T faultmanager_report_fault(uint32_t id, DiagResult status){
             
             if (fault_manager[id].heal_counter >= fault_definitions[id].heal_threshold) {
                 fault_manager[id].current_status = NoFault;
-            } else
-            {
+            } 
+            else{
                 fault_manager[id].current_status = Healing;
             }
         }
